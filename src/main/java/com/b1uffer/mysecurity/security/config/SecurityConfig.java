@@ -1,12 +1,28 @@
 package com.b1uffer.mysecurity.security.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    @Bean
+    SecurityWebFilterChain webfluxChain(ServerHttpSecurity http) {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .authorizeExchange(ex -> ex
+                        .pathMatchers("/", "/public/**").permitAll()
+                        .pathMatchers("/admin/**").hasRole("ADMIN")
+                        .anyExchange().authenticated()
+                )
+                .httpBasic(Customizer.withDefaults())
+                .build();
+    }
 
     /**
      * 서블릿 기반(Spring MVC) Spring Security FilterChain 예

@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
@@ -22,6 +25,16 @@ public class SecurityConfig {
                 )
                 .httpBasic(Customizer.withDefaults())
                 .build();
+    }
+
+    @Bean
+    MapReactiveUserDetailsService userDetailsService() {
+        UserDetails user = User.withUsername("user")
+                .password("{noop}pass").roles("USER").build();
+        UserDetails admin = User.withUsername("admin")
+                .password("{noop}pass").roles("ADMIN").build();
+
+        return new MapReactiveUserDetailsService(user, admin);
     }
 
     /**

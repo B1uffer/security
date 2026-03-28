@@ -7,6 +7,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableMethodSecurity
 public class SecurityConfig {
 
+
+    /**
+     * 서블릿 기반(Spring MVC) Spring Security FilterChain 예
+     */
+
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        http

@@ -1,7 +1,7 @@
 package com.b1uffer.mysecurity.filter.config;
 
-import com.b1uffer.mysecurity.filter.FirstFilter;
-import com.b1uffer.mysecurity.filter.SecondFilter;
+import com.b1uffer.mysecurity.filter.servlet.FirstFilter;
+import com.b1uffer.mysecurity.filter.servlet.SecondFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

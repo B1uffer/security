@@ -1,4 +1,4 @@
-package com.b1uffer.mysecurity.filter;
+package com.b1uffer.mysecurity.filter.servlet;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;

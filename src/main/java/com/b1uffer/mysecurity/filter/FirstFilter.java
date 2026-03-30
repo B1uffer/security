@@ -10,13 +10,14 @@ import jakarta.servlet.ServletResponse;
 import java.io.IOException;
 
 public class FirstFilter implements Filter {
-    // 초기화 작업을 하는 init 메서드
+    // Filter 초기화 작업을 하는 init 메서드
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
     }
 
     // 필터 동작 로직을 담당하는 doFilter 메서드
+    // 전처리 -> 다음 필터 호출 -> 후처리
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
@@ -25,9 +26,9 @@ public class FirstFilter implements Filter {
     }
 
     // 종료시 자원 해제를 하는 destroy 메서드
+    // 자원을 반납함
     @Override
     public void destroy() {
         Filter.super.destroy();
     }
-
 }

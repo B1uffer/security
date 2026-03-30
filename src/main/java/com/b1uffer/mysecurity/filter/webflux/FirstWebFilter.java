@@ -9,7 +9,7 @@ public class FirstWebFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         System.out.println("---- WebFilter start ----");
-        Mono<Void> filterChain = chain.filter(exchange).doOnTerminate(() -> {
+        Mono<Void> filterChain = chain.filter(exchange).doOnTerminate(() -> { // chain.doFilter가 아니라 filter임
             System.out.println("---- WebFilter end ----");
         });
         return filterChain;

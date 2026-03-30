@@ -1,6 +1,7 @@
 package com.b1uffer.mysecurity.filter.config;
 
 import com.b1uffer.mysecurity.filter.FirstFilter;
+import com.b1uffer.mysecurity.filter.SecondFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,13 @@ public class FilterConfiguration {
     @Bean
     public FilterRegistrationBean<FirstFilter> firstFilterRegistration() {
         FilterRegistrationBean<FirstFilter> firstFilterRegistration = new FilterRegistrationBean<>(new FirstFilter());
+        firstFilterRegistration.setOrder(1); // 얘를 먼저 실행하고
         return firstFilterRegistration;
+    }
+
+    @Bean FilterRegistrationBean<SecondFilter> secondFilterRegistration() {
+        FilterRegistrationBean<SecondFilter> secondFilterRegistration = new FilterRegistrationBean<>(new SecondFilter());
+        secondFilterRegistration.setOrder(2); // 얘를 나중에 실행함
+        return secondFilterRegistration;
     }
 }

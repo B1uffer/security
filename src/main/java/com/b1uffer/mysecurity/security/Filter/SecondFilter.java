@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Ordered 인터페이스
  */
-public class SecondFilter implements Filter, Ordered {
+public class SecondFilter implements Filter, Ordered { // Ordered import는 core클래스
     @Override
     public int getOrder() {
         return 2; // 숫자가 클수록 나중에 실행된다

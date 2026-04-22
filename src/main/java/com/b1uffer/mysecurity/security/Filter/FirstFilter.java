@@ -15,7 +15,7 @@ import java.io.IOException;
  * 괄호안의 숫자가 작을수록 우선순위가 높다, 즉 먼저 실행된다
  */
 @Order(1)
-public class FirstFilter implements Filter {
+public class FirstFilter implements Filter { // Filter import 클래스는 servlet이다
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,

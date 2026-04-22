@@ -15,6 +15,7 @@ public class FilterConfig {
                 new FilterRegistrationBean<>(new FirstFilter());
 
         registration.setOrder(1); // 먼저 실행하기
+        registration.addUrlPatterns("/api/*"); // 특정 경로에만 적용하기
         return registration;
     }
 
